@@ -33,10 +33,10 @@ namespace webapiproj.Controllers
         public HttpResponseMessage Get()
         {
             IEnumerable<SetupModel> result = null;
-            result = ctx.Setupok.Include(x => x.Alaplap).Include(x => x.Oprendszer).Include(x => x.Processzor).Include(x => x.Ram).Include(x => x.Videokartya).Include(x => x.Applikacio).Select(x => new SetupModel
+            result = ctx.Setupok.Include(x => x.Alaplap).Include(x => x.Oprendszer).Include(x => x.Processzor).Include(x => x.Ram).Include(x => x.Videokartya).Include(x=>x.Applikacio).Select(x => new SetupModel
             {
-                ApplikacioNeve = x.Applikacio.Nev,
-                Gepigeny = x.Gp,
+                ApplikacioNeve=x.Applikacio.Nev,
+                Gepigeny=x.Gp,
                 VidekortyaNev = x.Videokartya.Nev,
                 VideokartyaVram = x.Videokartya.Vram,
                 ProcesszorNev = x.Processzor.Nev,
@@ -48,15 +48,15 @@ namespace webapiproj.Controllers
                 OprendszerNev = x.Oprendszer.Nev,
                 Tarhely = x.Applikacio.Tarhely
             }).ToList();
-            return Request.CreateResponse(HttpStatusCode.OK, result);
+            return Request.CreateResponse(HttpStatusCode.OK,result);
         }
 
         // GET api/<controller>/5
         [ResponseType(typeof(SetupModel))]
-        public HttpResponseMessage Get(int id, string name)
+        public HttpResponseMessage Get(int id,string name)
         {
-            IEnumerable<SetupModel> result = null;
-            result = ctx.Setupok.Include(x => x.Alaplap).Include(x => x.Oprendszer).Include(x => x.Processzor).Include(x => x.Ram).Include(x => x.Videokartya).Include(x => x.Applikacio).Where(x => x.Applikacio.Nev == name).Select(x => new SetupModel
+            IEnumerable <SetupModel >result = null;
+            result = ctx.Setupok.Include(x => x.Alaplap).Include(x => x.Oprendszer).Include(x => x.Processzor).Include(x => x.Ram).Include(x => x.Videokartya).Include(x => x.Applikacio).Where(x=>x.Applikacio.Nev==name).Select(x=>new SetupModel
             {
                 ApplikacioNeve = x.Applikacio.Nev,
                 Gepigeny = x.Gp,

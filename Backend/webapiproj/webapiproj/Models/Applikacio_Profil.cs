@@ -18,5 +18,7 @@ namespace webapiproj.Models
         public virtual Applikacio Applikacio { get; set; }
         [ForeignKey("ProfilId")]
         public virtual Profil Profil { get; set; }
+
+
     }
 }

@@ -15,7 +15,7 @@ namespace webapiproj.Controllers
         public string Nev { get; set; }
         public string KategoriaNev { get; set; }
         public string KepeleresiUtja { get; set; }
-
+        
     }
     public class ApplikacioController : ApiController
     {
@@ -25,22 +25,22 @@ namespace webapiproj.Controllers
         public HttpResponseMessage Get()
         {
             IEnumerable<ApplikacioModel> result = null;
-            result = ctx.Applikaciok.Include(x => x.Kategoria).Select(x => new ApplikacioModel
-            {
-                Nev = x.Nev,
-                KategoriaNev = x.Kategoria.Nev,
-                KepeleresiUtja = x.Kepeleresiutja
-
+            result = ctx.Applikaciok.Include(x=>x.Kategoria).Select(x=>new ApplikacioModel
+            { 
+                Nev=x.Nev,
+                KategoriaNev=x.Kategoria.Nev,
+                KepeleresiUtja=x.Kepeleresiutja
+                
             }).ToList();
-            return Request.CreateResponse(HttpStatusCode.OK, result);
+            return Request.CreateResponse(HttpStatusCode.OK,result);
         }
 
         // GET api/<controller>/5
         [ResponseType(typeof(ApplikacioModel))]
-        public HttpResponseMessage Get(int id, string name)
+        public HttpResponseMessage Get(int id,string name)
         {
             ApplikacioModel result = null;
-            result = ctx.Applikaciok.Include(x => x.Kategoria).Where(x => x.Nev == name).Select(x => new ApplikacioModel
+            result = ctx.Applikaciok.Include(x => x.Kategoria).Where(x=>x.Nev==name).Select(x => new ApplikacioModel
             {
                 Nev = x.Nev,
                 KategoriaNev = x.Kategoria.Nev,

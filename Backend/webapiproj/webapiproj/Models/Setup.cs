@@ -32,6 +32,8 @@ namespace webapiproj.Models
         [ForeignKey("AlaplId")]
         public virtual Alaplap Alaplap { get; set; }
 
+        //aplikacio kapcsolat
+
         public int ApplikacioId { get; set; }
         [ForeignKey("ApplikacioId")]
         public virtual Applikacio Applikacio { get; set; }
